@@ -41,18 +41,15 @@ function sendMail() {
 
  // Mettre à jour le compte à rebours toutes les secondes
  const countdown = setInterval(function () {
-   // Obtenir la date actuelle et le temps restant
    const currentDate = new Date().getTime();
    const timeLeft = eventDate - currentDate;
-
-   // Calculer les jours, heures, minutes et secondes restantes
    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
    // Afficher le compte à rebours dans l'élément avec l'ID "countdown"
-   document.getElementById("countdown").innerHTML = "Event start in       "+
+   document.getElementById("countdown").innerHTML =
      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
    // Si le compte à rebours est terminé, afficher un message
