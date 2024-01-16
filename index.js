@@ -43,3 +43,27 @@ function sendMail() {
       document.querySelector('.sent-message').style.display = 'none';
     });
 }
+
+
+
+const eventDate = new Date("2024-02-14T00:00:00Z").getTime();
+
+ // Mettre à jour le compte à rebours toutes les secondes
+ const countdown = setInterval(function () {
+   const currentDate = new Date().getTime();
+   const timeLeft = eventDate - currentDate;
+   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+   // Afficher le compte à rebours dans l'élément avec l'ID "countdown"
+   document.getElementById("countdown").innerHTML =
+     days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+   // Si le compte à rebours est terminé, afficher un message
+   if (timeLeft < 0) {
+     clearInterval(countdown);
+     document.getElementById("countdown").innerHTML = "L'événement est en cours !";
+   }
+ }, 1000);
